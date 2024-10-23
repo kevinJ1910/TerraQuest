@@ -1,0 +1,125 @@
+/* 
+  Global styles for the entire application.
+  Ensures that the root element, body, and html take up the full viewport.
+  Sets a dark background color for the entire application.
+*/
+html, 
+body,
+#root {
+    position: fixed; /* Fixes the position to the viewport to prevent scrolling */
+    top: 0; /* Aligns the element to the top of the viewport */
+    left: 0; /* Aligns the element to the left of the viewport */
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    background-color: rgb(119, 148, 128); /* Dark background color for the application */
+}
+
+/* 
+  Styles for the canvas element to disable touch interactions.
+  Ensures smooth interactions with the canvas, especially for graphical applications.
+*/
+canvas {
+    touch-action: none; /* Disables touch interactions to avoid conflicts */
+}
+
+/* 
+  Styling for elements with the class 'title'.
+  Positions the title absolutely and ensures it is layered above other content.
+*/
+.title {
+    position: absolute; /* Positions the title absolutely within its containing element */
+    z-index: 1; /* Ensures the title is above other content */
+    color: white; /* Sets the text color to white for contrast against the dark background */
+}
+
+/* 
+  Styles for the login container.
+  Centers the content both vertically and horizontally using Flexbox.
+  Ensures the container takes up the full height of the viewport.
+*/
+.container-login {
+    display: flex; /* Uses Flexbox layout */
+    flex-direction: column; /* Aligns children elements in a column */
+    align-items: center; /* Centers children horizontally */
+    justify-content: center; /* Centers children vertically */
+    height: 100vh; /* Full viewport height */
+}
+
+/* 
+  Styling for heading (h1) elements on the login page.
+  Sets a light color, centers the text, and adds a subtle shadow for improved readability.
+*/
+h1 {
+    color: beige; /* Light color for text to contrast with the dark background */
+    text-align: center; /* Centers the text horizontally */
+    margin-bottom: 20px; /* Adds space below the heading */
+    text-shadow: 0 1px 8px #6e5227; /* Adds a subtle shadow to enhance text visibility */
+}
+
+/* 
+  Styling for buttons.
+  Defines padding, font size, background color, border radius, and adds transition effects.
+*/
+button {
+  padding: 12px 24px; /* Adds space inside the button */
+  font-size: 18px; /* Sets the font size */
+  color: #000000; /* Sets the text color to black */
+  background-color: beige; /* Light background color for the button */
+  border: none; /* Removes default border */
+  border-radius: 8px; /* Rounds the corners of the button */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for a 3D effect */
+  margin-top: 20px; /* Adds space above the button */
+}
+
+/* 
+  Button hover effect.
+  Changes background color and slightly lifts the button on hover.
+*/
+button:hover {
+    background-color: #6e5227; /* Changes background color on hover */
+    transform: translateY(-2px); /* Slightly lifts the button */
+}
+
+/* 
+  Button active state.
+  Provides feedback by changing the background color and resetting the button position when clicked.
+*/
+button:active {
+    background-color: #2f8a2d; /* Darker background color on click */
+    transform: translateY(0); /* Resets the button position */
+}
+
+/* 
+  Styling for the box element within the login container.
+  Includes background color, border, padding, and shadow.
+*/
+.box {
+    background-color: #446D5D; /* Dark background color for the box */
+    border: 2px solid #bbbbbb; /* Light border for contrast */
+    border-radius: 8px; /* Rounds the corners of the box */
+    padding: 40px; /* Adds space inside the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for a 3D effect */
+    text-align: center; /* Centers text inside the box */
+}
+
+/* 
+  Styling for welcome messages within the login container.
+  Sets the font size and margin for proper spacing.
+*/
+.welcome-message {
+    font-size: 30px; /* Large font size for emphasis */
+    margin-bottom: 20px; /* Adds space below the welcome message */
+}
+
+/* 
+  Container for login buttons.
+  Centers buttons vertically within the container.
+*/
+.login-buttons {
+    display: flex; /* Uses Flexbox layout */
+    flex-direction: column; /* Aligns buttons in a column */
+    align-items: center; /* Centers buttons horizontally */
+}
+
