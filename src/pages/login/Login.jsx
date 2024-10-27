@@ -76,7 +76,7 @@ const Login = () => {
   return (
     <div className="container-login">
       <div className="container-title">
-        <img src="src/assets/images/logo.jpg" alt="Logo TerraQuest" />
+        <img src="src/assets/images/logo.jpg" />
         <h1>TerraQuest</h1>
       </div>
       
