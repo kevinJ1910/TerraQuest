@@ -3,6 +3,9 @@ import { useCallback, useEffect, useState } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import UserDAO from "../../daos/UserDAO";
 import { useNavigate } from "react-router-dom";
+import logo from  '../../assets/images/logo.png';
+
+
 
 /**
  * Login is a component that handles user authentication via Google sign-in.
@@ -76,7 +79,7 @@ const Login = () => {
   return (
     <div className="container-login">
       <div className="container-title">
-        <img src="public/images/logo.jpg"  alt="Logo" />
+        <img src={logo}  alt="Logo" />
         <h1>TerraQuest</h1>
       </div>
       
