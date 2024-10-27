@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh; /* Full viewport height */
-  background-image: url('../../assets/images/deforestacion_login.jpg');
+  background-image: url('../../../public/images/deforestacion_login.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -46,6 +46,7 @@
   border: 2px solid #bbbbbb;
   justify-content: center;
   padding: 40px;
+  
 }
 
 .container-login img {
