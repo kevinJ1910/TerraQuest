@@ -1,14 +1,16 @@
-import './App.css';
+// App.jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
+import Inicio from './pages/inicio/Inicio';
 
-/**
- * App is the root component of the application.
- * It serves as the entry point and currently renders the Login component.
- */
 function App() {
   return (
-    // Renders the Login component, which handles user authentication.
-    <Login />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Inicio" element={<Inicio />} />
+      </Routes>
+    </Router>
   );
 }
 
