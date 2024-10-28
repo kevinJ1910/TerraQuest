@@ -1,5 +1,4 @@
 .container-title h1 {
-    font-size: 100%;
     width: 40%;
 }
 
@@ -14,10 +13,12 @@
 
 .button-logout {
     position: fixed;
-    margin-left: 81%;
-    margin-top: 6%;
+    margin-left: 95%;
+    margin-top: -0.4%;
+    cursor: pointer;
+
 }
 
 .inicio-container .container-title h1 {
-    font-size: 100%;
+    font-size: 80%;
   }
