@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import UserDAO from "../../daos/UserDAO";
 import { useNavigate } from "react-router-dom";
+import logo from '../../assets/images/logo.png';
 
 /**
  * Login is a component that handles user authentication via Google sign-in.
@@ -10,7 +11,7 @@ import { useNavigate } from "react-router-dom";
  */
 const Login = () => {
   // Destructure authentication-related properties and methods from the Zustand store.
-  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading, error } = useAuthStore();
+  const { user, loginGoogleWithPopUp, observeAuthState, loading, error } = useAuthStore();
 
   // Hook for programmatic navigation.
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Login = () => {
   /**
    * useEffect to handle side effects when the `user` state changes.
    * If the user is authenticated, their details are saved to the database,
-   * and the user is redirected to the "World" page.
+   * and the user is redirected to the "Inicio" page.
    */
   useEffect(() => {
     if (user) {
@@ -39,7 +40,7 @@ const Login = () => {
         photo: user.photoURL,
       };
       UserDAO.createUser(newUser); // Save the user's details to the database.
-      navigate(); // Redirect to the World page.
+      navigate("/Inicio"); // Redirige a la pagina de inicio si ya hay un usuario autenticado.
     }
   }, [user, navigate]);
 
@@ -55,14 +56,6 @@ const Login = () => {
     }
   }, [loginGoogleWithPopUp]);
 
-  /**
-   * handleLogout is a function that triggers the logout process.
-   * It is also memoized using `useCallback` for performance optimization.
-   */
-  const handleLogout = useCallback(() => {
-    logout();
-  }, [logout]);
-
   // Render a loading screen if the authentication state is still being determined.
   if (loading) {
     return (
@@ -72,31 +65,24 @@ const Login = () => {
     );
   }
 
-  // Render the login UI, or a welcome message with logout option if the user is authenticated.
+  // Render the login UI, or an error message if login fails.
   return (
     <div className="container-login">
       <div className="container-title">
-        <img src="src/assets/images/logo.jpg" alt="Logo TerraQuest" />
+        <img src={logo} alt="Logo" />
         <h1>TerraQuest</h1>
       </div>
-      
+
       <div className="box">
         {showError && (
           <p className="error-text">
             Hubo un error al iniciar sesión. Por favor, inténtalo de nuevo.
           </p>
         )}
-        {user ? (
-          <>
-            <h1 className="welcome-text">¡Hola, {user.displayName}!</h1>
-            <button className="button-logout" onClick={handleLogout}>
-              Cerrar sesión
-            </button>
-          </>
-        ) : (
+        {!user && (
           <div className="login-buttons">
             <h1 className="welcome-message">¡Bienvenido!</h1>
-            <h3 className="welcome-message">Inicia sesion con Google</h3>
+            <h3 className="welcome-message">Inicia sesión con Google</h3>
             <button className="button-login" onClick={handleLogin}>
               Iniciar sesión
             </button>
