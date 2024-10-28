@@ -1,4 +1,4 @@
-import Header from "../../components/header/header";
+import Header from "../../components/header/Header";
 import "./Inicio.css";
 import { Canvas } from "@react-three/fiber";
 import Forest from "./models-3d/Forest";

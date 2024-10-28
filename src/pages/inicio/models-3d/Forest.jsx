@@ -1,5 +1,6 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 
+
 const Tree = (props) => {
   const { nodes, materials } = useGLTF("models-3d/the_orange_tree.glb");
 
