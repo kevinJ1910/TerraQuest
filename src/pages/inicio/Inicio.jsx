@@ -4,12 +4,24 @@ import { Canvas } from "@react-three/fiber";
 import Forest from "./models-3d/Forest";
 import Controls from "../controls/Controls";
 import { Center, Text, Text3D } from "@react-three/drei";
+import Key from "./models-3d/Key";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Inicio = () => {
 
   const cameraSettings = {
     position: [-1.05, 0, 1],
     fov: 90,
+  }
+
+  const navigate = useNavigate();
+
+  const handleFirstKey = () =>{
+    navigate("/Deforestacion");
+  };
+
+  const handleSecondKey = () =>{
+    navigate("/Erosion_suelo");
   }
   return (
     <>
@@ -29,6 +41,8 @@ const Inicio = () => {
           {`La Tierra ha estado viva apróximadamente 4600 millones de años y, \n a través del tiempo sus ecosistemas se han conservado casi  \n a la perfección por sus capacidades de evolución, adaptación y \n perduración a través del tiempo. No obstante, la intervención humana \n es tan impactante en el medio ambiente que su capacidad de \n resilencia se ve fuertemente afectada,ocasionando distintos \n problemas serios en este que deben ser tratados con prioridad \n por el ser humano para reducir el daño que pueden realizar \n al planeta al corto y largo plazo.`}
         </Text>
         <Forest />
+        <Key position={[1.5,0.05,1.65]} rotation={[Math.PI,Math.PI,Math.PI*0.8]} onClick={handleFirstKey} />
+        <Key position={[1.5,-0.08,1.6]} rotation={[Math.PI,Math.PI,Math.PI*0.8]} onClick={handleSecondKey}/>
         <Text
           font = "/fonts/retroica.ttf"
           fontSize={0.09}
