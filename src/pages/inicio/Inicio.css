@@ -13,3 +13,8 @@ header {
     z-index: 10; /* Asegura que esté encima del Canvas */
     background-color: #446D5D; /* Color del header para diferenciarlo */
 }
+
+.inicio-container{
+    position: absolute;
+    height: 100vh;
+}
