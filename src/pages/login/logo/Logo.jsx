@@ -2,6 +2,7 @@ import { Circle } from "@react-three/drei";
 import * as THREE from "three";
 import {useRef} from "react";
 import { useFrame } from "@react-three/fiber";
+import logo from "../../../assets/images/logo.png";
 
 /**
  * Componente Logo
@@ -9,7 +10,7 @@ import { useFrame } from "@react-three/fiber";
  */
 const Logo = () => {
     // Cargar la textura del logo desde una ruta local.
-    const texture = new THREE.TextureLoader().load("src/assets/images/logo.png");
+    const texture = new THREE.TextureLoader().load(logo);
 
     // Crear una referencia para el logo que se usará para aplicar animaciones.
     const logoRef = useRef();
