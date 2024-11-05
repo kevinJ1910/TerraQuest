@@ -35,8 +35,9 @@ const Inicio = () => {
           font = "/fonts/retroica.ttf"
           fontSize={0.09}
           lineHeight={1.5}
-          color="#CD3A00"
+          color="#CC7927"
           position={[-1.6, 0, -1.5]}
+          
           >
           {`La Tierra ha estado viva apróximadamente 4600 millones de años y, \n a través del tiempo sus ecosistemas se han conservado casi  \n a la perfección por sus capacidades de evolución, adaptación y \n perduración a través del tiempo. No obstante, la intervención humana \n es tan impactante en el medio ambiente que su capacidad de \n resilencia se ve fuertemente afectada,ocasionando distintos \n problemas serios en este que deben ser tratados con prioridad \n por el ser humano para reducir el daño que pueden realizar \n al planeta al corto y largo plazo.`}
         </Text>
@@ -47,7 +48,7 @@ const Inicio = () => {
           font = "/fonts/retroica.ttf"
           fontSize={0.09}
           lineHeight={1.5}
-          color="#CC7927"
+          color="#CD3A00"
           position={[1.5, 0, 2.4]}
           rotation={[Math.PI*0.5,Math.PI*1.5,Math.PI*0.5]}
           
