@@ -3,6 +3,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 
 const Tree = (props) => {
   const { nodes, materials } = useGLTF("models-3d/the_orange_tree.glb");
+  
 
  return (
     <group {...props} dispose={null}>
@@ -141,13 +142,14 @@ const Tree = (props) => {
             castShadow
             receiveShadow
             geometry={nodes.Skybox_Material012_0.geometry}
-            material={materials['Material.012']}
+            
+            material={materials.SkyRight}
           />
           <mesh
             castShadow
             receiveShadow
             geometry={nodes.Skybox_SkyRight_0.geometry}
-            material={materials.SkyRight}
+            material={materials['Material.012']}
           />
         </group>
         <mesh
@@ -162,16 +164,17 @@ const Tree = (props) => {
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Sun004_Sun_0.geometry}
-          material={materials.material}
+          geometry={nodes.Moon_Moon_0.geometry}
+          material={materials.Moon}
           position={[8246.517, 1711.933, -21541.434]}
+          rotation={[Math.PI / 2, Math.PI / 2, 0]}
           scale={338.065}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Moon_Moon_0.geometry}
-          material={materials.Moon}
+          geometry={nodes.Sun004_Sun_0.geometry}
+          material={materials.material}
           position={[19801.924, 2074.146, -7330.442]}
           rotation={[-Math.PI / 2, Math.PI / 2, 0]}
           scale={410.54}

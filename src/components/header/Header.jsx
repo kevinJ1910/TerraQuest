@@ -1,6 +1,6 @@
 import "./Header.css";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import useAuthStore from "../../stores/use-auth-store";
 import logo from "../../assets/images/logo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,18 +23,25 @@ const Header = () => {
   
     return (
       <div className="inicio-container">
-        <div className="container-title">
+        <header className="container-header">
           <img src={logo} alt="Logo" />
-          <h1>Problemas Medioambientales Relacionados con la Tierra</h1>
-          <h6>Bienvenido a TerraQuest, {user.displayName}</h6>
+          <nav>
+            <ul>
+              <li><Link to="/Inicio"> Inicio</Link></li>
+              <li><Link to="/Deforestacion">Deforestacion</Link></li>
+              <li><Link to="/Erosion_suelo">Erosion del Suelo</Link></li>
+              <li><Link to="/Quiz">Quiz</Link></li>
+            </ul>
+          </nav>
           {user && (
             <button className="button-logout" onClick={logout}>
-              <FontAwesomeIcon icon={faSignOutAlt}/>
+              <FontAwesomeIcon icon={faSignOutAlt} />
             </button>
           )}
-        </div>
+        </header>
       </div>
     );
+    
     
   };
   
