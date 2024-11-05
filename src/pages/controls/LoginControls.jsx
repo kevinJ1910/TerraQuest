@@ -12,7 +12,7 @@ const LoginControls = () => {
             // Sets the minimum vertical rotation angle (polar) to about 45 degrees from the top
             minPolarAngle={Math.PI * 0.4}
             // Disables zoom functionality (users cannot zoom in or out)
-            enableZoom={true}
+            enableZoom={false}
              // Disables panning functionality (users cannot move the camera horizontally or vertically)
             enablePan={false}
 
