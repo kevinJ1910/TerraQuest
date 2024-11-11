@@ -1,18 +1,29 @@
-import Header from "../../components/header/Header"
+import { Canvas, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+import Header from "../../components/header/Header";
+import Swamp from "../inicio/models-3d/Swamp";
+import DeforControls from "../controls/DeforControls";
+import "./Deforestacion.css";
+import Lights from "../lights/Lights";
+import Staging from "../staging/Staging";
+import IntroDefor from "../texts/IntroDefor";
 
 const Deforestacion = () => {
 
     return (
         <>
-        <Header />
-        <div className="inicio-container">
-            <h1 style={{color:"black"}}>
-                La deforestación es la acción de la tala masiva de árboles en un territorio con alta masa de estos, con el objetivo de cambiar el propósito al que se va a dedicar dicho suelo.
-                Esta acción trae consecuencias adversas que son dañinas para el propio ecosistema y que, a la larga termina perjudicando más el bienestar de la humanidad.
-            </h1>
-        </div>
+            <Header />
+            <div className="container-defor">
+                <Canvas camera={{ position: [0, 5, 33], fov: 90 }}>
+                    <Lights />
+                    <DeforControls />
+                    <Swamp/>
+                    <primitive object={new THREE.AxesHelper(100)} /> {/* Tamaño de los ejes */}
+                    <Staging />
+                    <IntroDefor />
+                </Canvas>
+            </div>
         </>
-
     );
 };
 

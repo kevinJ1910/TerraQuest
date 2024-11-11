@@ -15,12 +15,13 @@
   top: 0;
 }
 
-img {
-  width: 4.5rem;
-  height: auto;
-  border-radius: 50%;
+
+h1 {
   position: absolute;
   left: 4rem;
+  width: 4.5rem;
+  color: white;
+  text-shadow: 0 1px 8px #6e5227; /* Adds a subtle shadow to enhance text visibility */
 }
 
 nav {
@@ -51,12 +52,14 @@ nav ul li a {
   padding: 0.5rem 1rem;
   background-color: #1e6f57;
   border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
   background-color: #c1e7dd;
   color: #217c61;
+  transform: translateY(-2px); /* Eleva el texto */
 }
 
 .button-logout {

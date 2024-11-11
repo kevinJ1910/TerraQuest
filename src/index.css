@@ -8,6 +8,7 @@ body,
 #root {
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 /* 
@@ -17,21 +18,6 @@ body,
 canvas {
     touch-action: none; /* Disables touch interactions to avoid conflicts */
 }
-
-/* 
-  Styling for heading (h1) elements on the login page.
-  Sets a light color, centers the text, and adds a subtle shadow for improved readability.
-*/
-h1 {
-    color: beige; /* Light color for text to contrast with the dark background */
-    text-align: center; /* Centers the text horizontally */
-    margin-bottom: 20px; /* Adds space below the heading */
-    text-shadow: 0 1px 8px #6e5227; /* Adds a subtle shadow to enhance text visibility */
-}
-
-
-
-
 
 /* 
   Button active state.
