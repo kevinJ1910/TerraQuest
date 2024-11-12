@@ -128,7 +128,11 @@ const Login = () => {
       
       {!user && (
         <>
-          <Canvas shadows camera={{ position: [0, 50, 370], fov: 75 }}>
+          <Canvas 
+          shadows
+          gl={{ preserveDrawingBuffer: true }}
+          camera={{ position: [0, 50, 370], fov: 75 }}
+          >
             <LoginControls />
             <ambientLight intensity={0.5} />
             
