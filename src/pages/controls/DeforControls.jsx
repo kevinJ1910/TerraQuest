@@ -5,7 +5,8 @@ const DeforControls = () => {
         <OrbitControls
         rotateSpeed={1} // Ajusta la velocidad de rotación
         panSpeed={1} // Ajusta la velocidad del paneo
-        enableZoom={true}
+        enableZoom={false}
+        enableRotate={false}
         />
     );
 };
