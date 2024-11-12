@@ -24,7 +24,7 @@ const Header = () => {
     return (
       <div className="inicio-container">
         <header className="container-header">
-          <img src={logo} alt="Logo" />
+          <h1>TERRAQUEST</h1>
           <nav>
             <ul>
               <li><Link to="/Inicio"> Inicio</Link></li>
