@@ -5,25 +5,30 @@ const Controls = ({ target, minZoom = 15, maxZoom = 100 }) => {
   const controlsRef = useRef();
 
   useEffect(() => {
-    // Si hay un target, ajustamos el enfoque de la cámara
     if (controlsRef.current && target) {
       controlsRef.current.target = target;
     }
 
-    // Establecemos los límites del zoom
     if (controlsRef.current) {
-      controlsRef.current.maxDistance = maxZoom;  // Establece el máximo de zoom (alejamiento)
-      controlsRef.current.minDistance = minZoom;  // Establece el mínimo de zoom (acercamiento)
+      controlsRef.current.maxDistance = maxZoom;
+      controlsRef.current.minDistance = minZoom;
     }
   }, [target, minZoom, maxZoom]);
 
   return (
     <OrbitControls
       ref={controlsRef}
-      enableZoom={true}  // Habilitamos el zoom
-      enablePan={false}  // Deshabilitamos el paneo (movimiento de cámara)
+      enableZoom={true}
+      enablePan={false}
+      // Límites de rotación vertical
+      maxPolarAngle={Math.PI / 2.5} // Ajusta este valor para limitar el ángulo hacia arriba
+      minPolarAngle={Math.PI / 3}   // Ajusta este valor para limitar el ángulo hacia abajo
+      // Límites de rotación horizontal
+      maxAzimuthAngle={Math.PI / 80} // Ajusta este valor para limitar el ángulo hacia la derecha
+      minAzimuthAngle={-Math.PI / 2} // Ajusta este valor para limitar el ángulo hacia la izquierda
     />
   );
 };
 
 export default Controls;
+
