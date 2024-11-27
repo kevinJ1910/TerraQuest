@@ -59,8 +59,8 @@ function LoginButton3D({ onClick }) {
       onPointerOut={() => setHovered(false)}
       castShadow
     >
-      <Box args={[220, 30, 5]} onClick={onClick} position={[0, 0, 0]} castShadow receiveShadow>
-        <meshStandardMaterial color="blue" transparent opacity={0.7} />
+      <Box args={[220, 30, 5]} onClick={onClick} position={[0, 0, 0]}>
+        <meshStandardMaterial color="blue" transparent opacity={0.7} castShadow receiveShadow />
       </Box>
 
       <Center position={[0, 0, 3]}>
@@ -72,6 +72,7 @@ function LoginButton3D({ onClick }) {
           font="fonts/Farek.json"
           height={3}
           castShadow
+          receiveShadow
         >
           Acceder con Google
           <meshStandardMaterial />
@@ -130,7 +131,6 @@ const Login = () => {
         <>
           <Canvas 
           shadows
-          gl={{ preserveDrawingBuffer: true }}
           camera={{ position: [0, 50, 370], fov: 75 }}
           >
             <LoginControls />
@@ -149,6 +149,7 @@ const Login = () => {
               shadow-camera-right={200}
               shadow-camera-top={200}
               shadow-camera-bottom={-200}
+              shadow-normalBias={0.05}
             />
 
             <LoginForest />
