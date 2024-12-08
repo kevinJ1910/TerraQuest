@@ -1,0 +1,95 @@
+.container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 2rem; /* Reduce el alto del header */
+    background-color: #217c61;
+    position: fixed;
+    height: 60px;
+    margin: 0 auto; /* Centra el header horizontalmente */
+    z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+    border-end-end-radius: 8px;
+    border-end-start-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para efecto de header */
+    width: 100%;
+    top: 0;
+  }
+  
+  
+  h1 {
+    position: absolute;
+    left: 4rem;
+    width: 4.5rem;
+    color: white;
+    text-shadow: 0 1px 8px #6e5227; /* Adds a subtle shadow to enhance text visibility */
+  }
+  
+  nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav ul li {
+    margin-right: 2rem;
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size:x-large;
+    padding: 0.5rem 1rem;
+    background-color: #1e6f57;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    background-color: #c1e7dd;
+    color: #217c61;
+    transform: translateY(-2px); /* Eleva el texto */
+  }
+  
+  .button-logout {
+    position: absolute;
+    right: 4rem;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 25px;
+    border: none;
+    color: white;
+    transition: color 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  .button-logout:hover {
+    color: black;
+  }
+  
+  /* 
+    Button hover effect.
+    Changes background color and slightly lifts the button on hover.
+  */
+  button:hover {
+    background-color: #c1e7dd; /* Changes background color on hover */
+    transform: translateY(-2px); /* Slightly lifts the button */
+  }
+
+.score {
+    color: white;
+    position: fixed;
+    right: 15rem;
+    font-size: 24px;
+}

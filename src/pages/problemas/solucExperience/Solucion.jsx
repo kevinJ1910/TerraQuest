@@ -11,7 +11,7 @@ import TreeRotate from "../../inicio/models-3d/TreeRotate";
 import Ankou from "../../inicio/models-3d/Ankou";
 import Ground from "./Ground";
 import { Physics, Debug } from "@react-three/cannon";
-import "./Sensibilizacion.css";
+import "./Solucion.css";
 import { useBox } from "@react-three/cannon";
 import { Text } from "@react-three/drei"; // Importa Text para agregar texto 3D
 import InicStaging from "../../staging/InicStaging";
@@ -28,6 +28,7 @@ const MovingItem = (props) => {
     const ref = useRef();
     const [isMoving, setIsMoving] = useState(false);
     const [currentCycle, setCurrentCycle] = useState(0);
+    const audioRef = useRef(new Audio('./audio/Song Of Unity.mp3')); // Cargar el audio
   
     useEffect(() => {
       const handleKeyDown = (e) => {
@@ -42,7 +43,20 @@ const MovingItem = (props) => {
         window.removeEventListener("keydown", handleKeyDown);
       };
     }, [isMoving]);
-  
+
+    useEffect(() => {
+    // Reproduce el audio cuando el componente esté activo
+    const audio = audioRef.current;
+    audio.loop = true; // Opcional: para que la música se repita
+    audio.play();
+
+    return () => {
+      // Detén el audio cuando el componente se desmonte
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, []); // Ejecutar al montar
+
     useFrame(() => {
       if (isMoving) {
         const targetPositionX = 20 * (currentCycle + 1);
@@ -468,7 +482,7 @@ const Background = () => {
   );
 };
 
-const Sensibilizacion = () => {
+const Solucion = () => {
   return (
     <>
       <Header />
@@ -512,4 +526,4 @@ const Sensibilizacion = () => {
   );
 };
 
-export default Sensibilizacion;
+export default Solucion;

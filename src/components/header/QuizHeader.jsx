@@ -1,14 +1,13 @@
-import "./Header.css";
+import "./QuizHeader.css";
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import useAuthStore from "../../stores/use-auth-store";
-import logo from "../../assets/images/logo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; // Icono de "cerrar sesión"
 import useStore from "../../stores/use-quiz-store";
 
 
-const Header = () => {
+const QuizHeader = () => {
     const { user, logout } = useAuthStore();
     const navigate = useNavigate();
     const score = useStore((state) => state.score);
@@ -40,7 +39,7 @@ const Header = () => {
               <FontAwesomeIcon icon={faSignOutAlt} />
             </button>
           )}
-
+           <div className="score">Puntuación: {score}</div>
         </header>
       </div>
     );
@@ -48,4 +47,4 @@ const Header = () => {
     
   };
   
-  export default Header;
+  export default QuizHeader;

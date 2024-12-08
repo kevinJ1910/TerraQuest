@@ -6,7 +6,7 @@ const SoluDef = () => {
     const navigate = useNavigate();
 
     const goToSection = () => {
-        navigate("/Sensibilidad");
+        navigate("/Solucion");
     };
     return (
         <Html

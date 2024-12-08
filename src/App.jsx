@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Inicio from './pages/inicio/Inicio';
 import Deforestacion from './pages/problemas/Deforestacion';
-import Erosion from './pages/problemas/Erosion';
-import Sensibilizacion from './pages/problemas/sensExperience/Sensibilizacion';
+import Solucion from './pages/problemas/solucExperience/Solucion'
+import PlantTreesScene from './pages/quiz/PlantTrees';
+import Gallery from './pages/problemas/Gallery';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/Inicio" element={<Inicio />} />
         <Route path="/Deforestacion" element={<Deforestacion />} />
-        <Route path="/Erosion_suelo" element={<Erosion />} />
-        <Route path="/Sensibilidad" element={<Sensibilizacion />} />
+        <Route path="/Galeria" element={<Gallery />} />
+        <Route path="/Solucion" element={<Solucion />} />
+        <Route path='/Quiz' element={<PlantTreesScene />} />
       </Routes>
     </Router>
   );
