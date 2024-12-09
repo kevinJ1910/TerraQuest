@@ -27,10 +27,12 @@ const useAuthStore = create((set) => ({
    * If an error occurs during sign-in, it is logged to the console.
    */
   loginGoogleWithPopUp: async () => {
-    await signInWithPopup(auth, provider)
-    .catch((error) => {
-      console.log(error);
-    });
+    const result = await signInWithPopup(auth, provider).catch(console.log);
+    if (result?.user) {
+      set({ user: result.user });
+      const loadUserData = useStore.getState().loadUserData;
+      await loadUserData(result.user.uid); // Cargar datos del usuario
+    }
   },
 
   /**
@@ -40,12 +42,8 @@ const useAuthStore = create((set) => ({
    */
   logout: async () => {
     await signOut(auth)
-      .then(() => {
-        set({ user: null });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => set({ user: null }))
+      .catch(console.log);
   },
 
   /**
@@ -63,6 +61,7 @@ const useAuthStore = create((set) => ({
       }
     });
   },
+
 }));
 
 export default useAuthStore;
