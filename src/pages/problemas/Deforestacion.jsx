@@ -88,6 +88,4 @@ const CameraUpdater = ({ targetPosition, targetLookAt }) => {
     return null;
 };
 
-
-
 export default Deforestacion;

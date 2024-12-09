@@ -9,7 +9,7 @@ const Gallery = () => {
         <>
         <Header />
         <div className="inicio-container">
-        <div className="gallery">
+          <div className="gallery">
             <h2>Recompensas Coleccionables</h2>
             <ul>
               {rewards.map((reward, index) => (
