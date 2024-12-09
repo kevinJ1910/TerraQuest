@@ -29,10 +29,11 @@ const MovingItem = (props) => {
     const [isMoving, setIsMoving] = useState(false);
     const [currentCycle, setCurrentCycle] = useState(0);
     const audioRef = useRef(new Audio('./audio/Song Of Unity.mp3')); // Cargar el audio
-  
+    const MAX_CYCLES = 4; // Número máximo de ciclos permitidos
+
     useEffect(() => {
       const handleKeyDown = (e) => {
-        if ((e.key === "ArrowLeft" || e.key === "a") && !isMoving) {
+        if ((e.key === "ArrowLeft" || e.key === "a") && !isMoving && currentCycle < MAX_CYCLES) {
           setIsMoving(true);
         }
       };
@@ -483,10 +484,25 @@ const Background = () => {
 };
 
 const Solucion = () => {
+  const [showNavMessage, setShowNavMessage] = useState(true);
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setShowNavMessage(false);
+      }, 5000);
+  
+      return () => clearTimeout(timer); // Limpiar el temporizador al desmontar
+    }, []);
+
   return (
     <>
       <Header />
         <div className="inicio-container">
+            {showNavMessage && (
+              <div className="message-container">
+                <h2>Usa las tecla "A"  o "←" para navegar</h2>
+              </div>
+            )}
             <Canvas shadows camera={{ position: [-5, 2, 4], fov: 50 }}>
               <SoluControls />
               <directionalLight

@@ -44,7 +44,7 @@
   z-index: 10;
   font-family: 'Arial', sans-serif;
   margin-top: 30px;
-  animation: fadeInOut 10s ease-in-out;
+  animation: fadeInOut 8s ease-in-out;
 }
 
 .limpieza-message h2,

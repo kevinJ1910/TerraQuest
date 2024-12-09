@@ -8,6 +8,7 @@ import useStore from '../../stores/use-quiz-store';
 import * as THREE from 'three';
 import "./PlantTrees.css";
 import BadTree from '../inicio/models-3d/BadTree';
+import QuizExpl from '../texts/QuizExpl';
 
 const PlantTreesScene = () => {
   const [trees, setTrees] = useState([]); // Árboles plantados
@@ -26,7 +27,7 @@ const PlantTreesScene = () => {
 
   // Definir los objetivos de la cámara
   const objetivos = [
-    { cameraPos: [80, 7, 0], targetPos: [100, 3, 0] }, // Vista inicial
+    { cameraPos: [80, 4, 0], targetPos: [100, 3, 0] }, // Vista inicial
     { cameraPos: [0, 30, 60], targetPos: [0, 0, 0] }, // Enfoque en reforestación
     { cameraPos: [-30, 7, 0], targetPos: [-50, 3, 0] }, // Enfoque en limpieza
   ];
@@ -79,7 +80,7 @@ const PlantTreesScene = () => {
     if (currentObjectiveIndex === 1) {
       const timerId = setTimeout(() => {
         setShowReforestMessage(false);
-      }, 10000); // El mensaje durará 10 segundos
+      }, 8000); // El mensaje durará 8 segundos
 
       return () => clearTimeout(timerId);
     } 
@@ -92,7 +93,7 @@ const PlantTreesScene = () => {
     if (timeExpired || cleaningDisabled) return; // No permitir interacción si el tiempo se agotó o si está deshabilitado
   
     setBottles((prevBottles) => prevBottles.filter((_, i) => i !== index));
-    addPoints(5);
+    addPoints(25);
   
     if (bottles.length === 1) { // La longitud será 1 antes de eliminar la última botella
       setCleanSuccess(true);
@@ -108,7 +109,7 @@ const PlantTreesScene = () => {
     if (currentObjectiveIndex === 2) {
       const timerId = setTimeout(() => {
         setShowFireWarning(false); // Ocultar el mensaje después de 5 segundos
-      }, 10000); 
+      }, 8000); 
   
       // Limpiar el timeout cuando el componente se desmonte o cambie el índice
       return () => clearTimeout(timerId);
@@ -214,11 +215,11 @@ const PlantTreesScene = () => {
             shadow-mapSize-width={1024}
             shadow-mapSize-height={1024}
           />
-
           <CameraUpdater
             targetPosition={targetCameraPosition}
             targetLookAt={targetLookAtPosition}
           />
+          <QuizExpl />
 
           <TreeGrid
             basePosition={[40, 0, -27]} // Posición inicial
@@ -273,7 +274,7 @@ const PlantTreesScene = () => {
             position={[0, -0.1, 0]}
             receiveShadow
           >
-            <planeGeometry args={[500, 500]} />
+            <planeGeometry args={[300, 300]} />
             <meshStandardMaterial color="#2da551" />
           </mesh>
 
