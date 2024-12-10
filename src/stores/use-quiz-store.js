@@ -13,12 +13,14 @@ const useStore = create((set) => ({
     }
   },
   addReward: async (reward, userId) => {
-    set((state) => ({ rewards: [...state.rewards, reward] }));
+    set((state) => ({ rewards: [...state.rewards, reward] })); // Actualiza el estado local
     if (userId) {
       const userRef = doc(db, "users", userId);
-      await setDoc(userRef, { rewards: [...state.rewards, reward] }, { merge: true });
+      const currentRewards = (await getDoc(userRef)).data()?.rewards || []; // Obtén recompensas existentes
+      await setDoc(userRef, { rewards: [...currentRewards, reward] }, { merge: true });
     }
   },
+  
   loadUserData: async (userId) => {
     if (userId) {
       const userRef = doc(db, "users", userId);

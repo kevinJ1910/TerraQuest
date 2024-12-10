@@ -29,7 +29,7 @@ const PlantTreesScene = () => {
 
   const addPoints = useStore((state) => state.addPoints); // Función para sumar puntos
   const addReward = useStore((state) => state.addReward); // Función para añadir recompensas
-
+    
   // Definir los objetivos de la cámara
   const objetivos = [
     { cameraPos: [80, 4, 0], targetPos: [100, 3, 0] }, // Vista inicial
@@ -165,7 +165,7 @@ const PlantTreesScene = () => {
     setBottles(initialBottles);
     // Comprobar si estamos en el objetivo 3 (índice 2)
     if (currentObjectiveIndex === 2 && timer === null) {
-      setTimer(40); // Iniciar el temporizador con 30 segundos
+      setTimer(20); // Iniciar el temporizador con 20 segundos
     }
   }, [currentObjectiveIndex, timer]);
 
@@ -231,9 +231,16 @@ const PlantTreesScene = () => {
             position={[5, 10, 5]}
             intensity={1}
             castShadow
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
+            shadow-mapSize-width={2048} // Aumentar la resolución del mapa de sombras
+            shadow-mapSize-height={2048}
+            shadow-camera-near={0.5}
+            shadow-camera-far={50}
+            shadow-camera-left={-30}
+            shadow-camera-right={30}
+            shadow-camera-top={30}
+            shadow-camera-bottom={-30}
           />
+
           <CameraUpdater
             targetPosition={targetCameraPosition}
             targetLookAt={targetLookAtPosition}
@@ -298,7 +305,8 @@ const PlantTreesScene = () => {
           <mesh
             rotation={[-Math.PI / 2, 0, 0]}
             position={[0, -0.1, 0]}
-            receiveShadow
+            receiveShadoww
+            castShadow
           >
             <planeGeometry args={[300, 300]} />
             <meshStandardMaterial color="#2da551" />
@@ -310,6 +318,7 @@ const PlantTreesScene = () => {
             position={[0, 0, 0]}
             onClick={handlePlantTree}
             receiveShadow
+            castShadow
           >
             <planeGeometry args={[50, 50]} />
             <meshStandardMaterial color="#8B4513" />
@@ -320,6 +329,7 @@ const PlantTreesScene = () => {
             rotation={[-Math.PI / 2, 0, 0]}
             position={[-50, 0, 0]} // Desplazado hacia adelante
             receiveShadow
+            castShadow
           >
             <planeGeometry args={[20, 20]} />
             <meshStandardMaterial color="#3B5323" />
@@ -374,8 +384,7 @@ const PlantTreesScene = () => {
         {/* Mensaje de éxito en la limpieza */}
         {cleanSuccess &&  currentObjectiveIndex === 2 &&(
           <div className="reforest-message">
-            <h2>¡Excelente has ganado el logro 🌟 Limpieza Completada! Has prevenido un desastre ambiental.</h2>
-            El bosque está sano gracias a tus acciones.
+            <h2>¡Excelente has ganado el logro 🌟 Limpieza Completada! Has eliminado los riesgos de incendio y asegurado la protección de este ecosistema. Gracias a tu acción, el bosque sigue siendo un refugio seguro para la vida silvestre y una fuente de aire limpio para todos.</h2>
           </div>
         )}
 

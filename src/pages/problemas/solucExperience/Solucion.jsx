@@ -50,6 +50,7 @@ const MovingItem = (props) => {
     // Reproduce el audio cuando el componente esté activo
     const audio = audioRef.current;
     audio.loop = true; // Opcional: para que la música se repita
+    audio.volume = 0.15; // Ajusta el volumen 
     audio.play();
 
     return () => {
