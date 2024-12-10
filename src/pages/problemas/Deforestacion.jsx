@@ -32,6 +32,7 @@ const Deforestacion = () => {
         // Reproduce el audio cuando el componente esté activo
         const audio = audioRef.current;
         audio.loop = true; // Opcional: para que la música se repita
+        audio.volume = 0.1; // Ajusta el volumen 
         audio.play();
     
         return () => {

@@ -31,9 +31,9 @@ const useAuthStore = create((set) => ({
     if (result?.user) {
       set({ user: result.user });
       const loadUserData = useStore.getState().loadUserData;
-      await loadUserData(result.user.uid); // Cargar datos del usuario
+      await loadUserData(result.user.uid); // Carga recompensas y otros datos del usuario
     }
-  },
+  },  
 
   /**
    * Signs the user out of the application.
