@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { Grid, OrbitControls } from '@react-three/drei';
 import Tree from '../inicio/models-3d/Tree';
 import Botella from '../inicio/models-3d/Botella';
 import QuizHeader from '../../components/header/QuizHeader';
@@ -9,6 +9,10 @@ import * as THREE from 'three';
 import "./PlantTrees.css";
 import BadTree from '../inicio/models-3d/BadTree';
 import QuizExpl from '../texts/QuizExpl';
+import { EffectComposer, Bloom, Vignette, Noise, DepthOfField, Scanline, SMAA, ToneMapping, Outline, LensFlare, HueSaturation, GodRays, Glitch } from '@react-three/postprocessing';
+import { BlendFunction } from 'postprocessing';
+import QuizStaging from '../staging/QuizStaging';
+import QuizControl from '../controls/QuizControl';
 
 const PlantTreesScene = () => {
   const [trees, setTrees] = useState([]); // Árboles plantados
@@ -21,6 +25,7 @@ const PlantTreesScene = () => {
   const [timeExpired, setTimeExpired] = useState(false); // Controla si se agotó el tiempo
   const [cleanSuccess, setCleanSuccess] = useState(false); // Éxito en limpieza
   const [currentObjectiveIndex, setCurrentObjectiveIndex] = useState(0);
+  const audioRef = useRef(new Audio('./audio/sounds-of-nature.mp3')); // Cargar el audio
 
   const addPoints = useStore((state) => state.addPoints); // Función para sumar puntos
   const addReward = useStore((state) => state.addReward); // Función para añadir recompensas
@@ -34,6 +39,19 @@ const PlantTreesScene = () => {
 
   const [targetCameraPosition, setTargetCameraPosition] = useState(objetivos[0].cameraPos);
   const [targetLookAtPosition, setTargetLookAtPosition] = useState(objetivos[0].targetPos);
+
+  useEffect(() => {
+    // Reproduce el audio cuando el componente esté activo
+    const audio = audioRef.current;
+    audio.loop = true; // Opcional: para que la música se repita
+    audio.play();
+
+    return () => {
+      // Detén el audio cuando el componente se desmonte
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, []); // Ejecutar al montar
 
   const handleKeyDown = (event) => {
     if (event.key === 'ArrowUp' || event.key === 'w') {
@@ -206,8 +224,9 @@ const PlantTreesScene = () => {
       <QuizHeader />
       <div className="inicio-container">
         <Canvas shadows camera={{ position: objetivos[0].cameraPos, fov: 50 }}>
-          <OrbitControls />
+          <QuizControl />
           <ambientLight intensity={0.5} />
+          <QuizStaging />
           <directionalLight
             position={[5, 10, 5]}
             intensity={1}
@@ -220,6 +239,13 @@ const PlantTreesScene = () => {
             targetLookAt={targetLookAtPosition}
           />
           <QuizExpl />
+          <EffectComposer>
+            <ToneMapping />
+            <Vignette eskil={false} offset={0.25} darkness={0.8} />
+            <Noise opacity={0.6} blendFunction={BlendFunction.SOFT_LIGHT}/>
+            <HueSaturation hue={0.2} saturation={0.5} />
+            <DepthOfField />
+          </EffectComposer>
 
           <TreeGrid
             basePosition={[40, 0, -27]} // Posición inicial

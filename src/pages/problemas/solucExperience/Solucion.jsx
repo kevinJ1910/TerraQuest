@@ -23,6 +23,7 @@ import Planta from "../../inicio/models-3d/Plantas";
 import Cerca from "../../inicio/models-3d/Cerca";
 import CercaRot from "../../inicio/models-3d/CercaRot";
 import SoluControls from "../../controls/SoluControls";
+import { EffectComposer, Bloom, Vignette, Noise, Sepia, Scanline, SMAA, ToneMapping, Outline, LensFlare, HueSaturation, GodRays, Glitch, SSAO, Pixelation, ColorAverage, DepthOfField, DotScreen, BrightnessContrast, Autofocus } from '@react-three/postprocessing';
 
 const MovingItem = (props) => {
     const ref = useRef();
@@ -517,6 +518,10 @@ const Solucion = () => {
                 shadow-camera-top={10}
                 shadow-camera-bottom={-10}
                 />
+              <EffectComposer>
+                <Vignette eskil={false} offset={0.25} darkness={0.8}  />
+                <DepthOfField />
+              </EffectComposer>
               <InicStaging />
               <Environment preset="sunset" intensity={0.7} blur={0.8} />
               <Physics gravity={[0, -9.8, 0]}>

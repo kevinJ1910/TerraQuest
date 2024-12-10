@@ -10,6 +10,8 @@ import PropInic from "../texts/PropInic";
 import Key from "./models-3d/Key";
 import LightsInic from "../lights/LightsInic";
 import { BakeShadows, ContactShadows } from "@react-three/drei";
+import { EffectComposer, Bloom, Vignette, Noise, DepthOfField, Scanline, SMAA, ToneMapping, Outline, LensFlare, HueSaturation, GodRays, Glitch } from '@react-three/postprocessing';
+import { BlendFunction } from 'postprocessing';
 
 const Inicio = () => {
   const targetPosition = new THREE.Vector3(-10, 0, 10);
@@ -66,6 +68,9 @@ const Inicio = () => {
             color="#000000"
           />
           <Forest />
+          <EffectComposer>
+            <HueSaturation hue={0.2} saturation={0.5} />
+          </EffectComposer>
           {showIntro && <IntroInic closeIntro={closeIntro} />}
           {showProp && <PropInic closeProp={closeProp} />}
           <Key position={[-10, 0.05, -5]} rotation={[Math.PI, Math.PI / 4, Math.PI * 0.8]} onClick={handleFirstKey} />
