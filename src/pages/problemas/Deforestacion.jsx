@@ -1,6 +1,6 @@
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Header from "../../components/header/Header";
 import Swamp from "../inicio/models-3d/Swamp";
 import DeforControls from "../controls/DeforControls";
@@ -24,6 +24,31 @@ const Deforestacion = () => {
     // Estado para la posición final y objetivo de la cámara
     const [targetCameraPosition, setTargetCameraPosition] = useState(objetivos[0].cameraPos);
     const [targetLookAtPosition, setTargetLookAtPosition] = useState(objetivos[0].targetPos);
+    const [showNavMessage, setShowNavMessage] = useState(true);
+    const audioRef = useRef(new Audio('./audio/forest-sounds.mp3')); // Cargar el audio
+
+
+    useEffect(() => {
+        // Reproduce el audio cuando el componente esté activo
+        const audio = audioRef.current;
+        audio.loop = true; // Opcional: para que la música se repita
+        audio.play();
+    
+        return () => {
+          // Detén el audio cuando el componente se desmonte
+          audio.pause();
+          audio.currentTime = 0;
+        };
+      }, []); // Ejecutar al montar
+
+    // Mostrar mensaje por 5 segundos al montar el componente
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setShowNavMessage(false);
+      }, 5000);
+
+      return () => clearTimeout(timer); // Limpiar el temporizador al desmontar
+    }, []);
 
     const handleKeyDown = (event) => {
         if (event.key === "w" || event.key === "ArrowUp") {
@@ -58,6 +83,11 @@ const Deforestacion = () => {
         <>
             <Header />
             <div className="container-defor">
+                {showNavMessage && (
+                    <div className="message-container">
+                      <h2>Navega con las teclas "W" y "S" o usando ↑  ↓</h2> 
+                    </div>
+                )}
                 <Canvas camera={{ position: objetivos[0].cameraPos, fov: 90 }}>
                     <Lights />
                     <DeforControls />
@@ -87,7 +117,5 @@ const CameraUpdater = ({ targetPosition, targetLookAt }) => {
 
     return null;
 };
-
-
 
 export default Deforestacion;
